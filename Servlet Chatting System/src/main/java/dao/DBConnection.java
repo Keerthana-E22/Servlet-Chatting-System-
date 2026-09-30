@@ -1,0 +1,46 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DBConnection {
+
+    private static final String URL =
+            "jdbc:mysql://db01.dbhost.dev:5051/db_454pwb5qg"
+            + "?useSSL=false"
+            + "&allowPublicKeyRetrieval=true"
+            + "&serverTimezone=UTC";
+
+    private static final String USER =
+            "user_454pwb5qg";
+
+    private static final String PASSWORD =
+            "p454pwb5qg";
+
+    public static Connection getConnection() {
+
+        Connection con = null;
+
+        try {
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            con = DriverManager.getConnection(
+                    URL,
+                    USER,
+                    PASSWORD
+            );
+
+            System.out.println(
+                    "Database Connected Successfully!"
+            );
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+        return con;
+    }
+}
